@@ -10,7 +10,7 @@ const app = express();
 
 app.use(
   cors({
-    origin: "https://wedding-event-frontend.netlify.app", // Replace with your Netlify frontend URL
+    origin: "*", 
     credentials: true,
   })
 );
