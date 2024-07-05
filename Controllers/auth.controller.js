@@ -73,7 +73,7 @@ export const google = async (req, res, next) => {
 
       res
         .status(200)
-        .json({ message: "User LoggedIn Successfully", rest});
+        .json({ message: "User LoggedIn Successfully", rest ,token});
     } else {
       const generatePassword =
         Math.random().toString(36).slice(-8) +
@@ -97,7 +97,7 @@ export const google = async (req, res, next) => {
 
       res
         .status(200)
-        .json({ message: "User LoggedIn Successfully", rest });
+        .json({ message: "User LoggedIn Successfully", rest ,token});
     }
   } catch (error) {
     next(error);
