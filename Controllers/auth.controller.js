@@ -1,9 +1,8 @@
 import User from "../Models/userModel.js";
 import { errorHandler } from "../Utils/Error.js";
 import bcryptjs from "bcryptjs";
-import jwt from 'jsonwebtoken';
+import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
-
 dotenv.config();
 
 export const registerUser = async (req, res, next) => {
@@ -18,7 +17,6 @@ export const registerUser = async (req, res, next) => {
   ) {
     return next(errorHandler(400, "All the Fields Are Required"));
   }
-
   const hashedPassword = bcryptjs.hashSync(password, 10);
 
   const newUser = new User({ username, email, password: hashedPassword });
@@ -51,14 +49,13 @@ export const loginUser = async (req, res, next) => {
     const { password: passkey, ...rest } = userDetail._doc;
 
     res
-      .status(200).cookie('access_Token',token,{
-        httpOnly:true,
-      })
-      .json({ message: "User LoggedIn Successfully", rest });
+      .status(200)
+      .json({ message: "User LoggedIn Successfully", rest, token });
   } catch (error) {
     next(error);
   }
 };
+
 export const google = async (req, res, next) => {
   const { email, name, profilePic } = req.body;
   try {
@@ -103,5 +100,3 @@ export const google = async (req, res, next) => {
     next(error);
   }
 };
-
-
