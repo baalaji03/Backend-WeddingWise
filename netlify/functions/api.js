@@ -8,24 +8,21 @@ import cors from "cors";
 dotenv.config();
 
 const app = express();
-const cors =require("cors");
+
+// Correct CORS middleware setup
 app.use(
-
-
-api.use(
   cors({
     origin: "https://wedding-event-frontend.netlify.app", // Your Netlify frontend URL
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
     credentials: true,
   })
-)
-
 );
 
 app.use(express.json());
 
-api.use((err, req, res, next) => {
+// Error handler
+app.use((err, req, res, next) => {
   const statusCode = err.statusCode || 500;
   const message = err.message || "Internal Server Error";
   res.status(statusCode).json({
@@ -43,8 +40,7 @@ router.get("/", (_, res) => {
   res.send("Welcome to API");
 });
 
-api.use("/api/", router);
-api.use("/api/auth/", authRoute);
-  
+app.use("/api/", router);
+app.use("/api/auth/", authRoute);
 
-export const handler = serverless(api);
+export const handler = serverless(app);
