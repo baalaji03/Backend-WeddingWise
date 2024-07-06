@@ -8,22 +8,18 @@ dotenv.config();
 
 const app = express();
 
-// CORS configuration
 app.use(
   cors({
-    origin: "https://wedding-event-frontend.netlify.app", 
+    origin: "https://wedding-event-frontend.netlify.app", // Your Netlify frontend URL
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
     credentials: true,
   })
 );
-app.options("*", cors());
 
 app.use(express.json());
 
-// Error handler
 app.use((err, req, res, next) => {
-  console.error("Error:", err.message);
   const statusCode = err.statusCode || 500;
   const message = err.message || "Internal Server Error";
   res.status(statusCode).json({
@@ -39,7 +35,6 @@ app.get("/", (req, res) => {
   res.send("Welcome to API");
 });
 
-// API Routes
 app.use("/api/auth", authRoute);
 
 const PORT = process.env.PORT || 5000;
