@@ -7,18 +7,23 @@ import cors from "cors";
 
 dotenv.config();
 
-const api = express();
+const app = express();
+const cors =require("cors");
+app.use(
+
 
 api.use(
   cors({
-    origin: "*", // Your Netlify frontend URL
+    origin: "https://wedding-event-frontend.netlify.app", // Your Netlify frontend URL
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
     credentials: true,
   })
+)
+
 );
 
-api.use(express.json());
+app.use(express.json());
 
 api.use((err, req, res, next) => {
   const statusCode = err.statusCode || 500;
