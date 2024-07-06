@@ -9,6 +9,7 @@ const router = Router();
 router.get("/hello", (req, res) => res.send("Hello World!"));
 
 api.use("/api/", router);
+
 // netlify/functions/auth.js
 exports.handler = async (event, context) => {
     if (event.httpMethod === "OPTIONS") {
