@@ -2,13 +2,17 @@
   external_node_modules = ["express"]
   node_bundler = "esbuild"
 
-[build]
-command = "npm run build"
-publish ="/build"
-base ="/"
-
 [[redirects]]
-  force = true
   from = "/*"
-  status = 200
   to = "/index.html"
+  status = 200
+
+[build]
+  command = "npm run build"
+  publish = "build"
+
+[dev]
+  command = "npm run start"
+
+[build.environment]
+  NODE_ENV = "production"

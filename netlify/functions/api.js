@@ -9,7 +9,13 @@ dotenv.config();
 
 const app = express();
 
-// Correct CORS middleware setup
+// Logging middleware to check requests
+app.use((req, res, next) => {
+  console.log(`Received request: ${req.method} ${req.url}`);
+  next();
+});
+
+// CORS middleware
 app.use(
   cors({
     origin: "https://wedding-event-frontend.netlify.app", // Your Netlify frontend URL
@@ -18,6 +24,12 @@ app.use(
     credentials: true,
   })
 );
+
+// Test logging to ensure CORS middleware runs
+app.use((req, res, next) => {
+  console.log('CORS middleware applied');
+  next();
+});
 
 app.use(express.json());
 
