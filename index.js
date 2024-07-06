@@ -7,16 +7,15 @@ import authRoute from "./Routes/authRouter.js";
 dotenv.config();
 
 const app = express();
-
+const cors =require("cors");
 app.use(
   cors({
-    origin: "https://wedding-event-frontend.netlify.app", // Your Netlify frontend URL
+    origin: "*", // Your Netlify frontend URL
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
     credentials: true,
   })
-);
-
+)
 app.use(express.json());
 
 app.use((err, req, res, next) => {
