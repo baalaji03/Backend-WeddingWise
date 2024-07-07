@@ -8,7 +8,6 @@ import cors from "cors";
 dotenv.config();
 
 const app = express();
-//var app = require('express')();
 
 // Logging middleware to check requests
 app.use((req, res, next) => {
@@ -18,20 +17,16 @@ app.use((req, res, next) => {
 
 // CORS middleware
 app.use(cors({
-    origin: ['*'],
+    origin: '*',
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization'],
     credentials: true,
   }));
   
 
- 
-  
-// Test logging to ensure CORS middleware runs
-app.use((req, res, next) => {
-  console.log('CORS middleware applied');
-  next();
-});
+  app.use((req, res, next) => {
+    next();
+  });
 
 app.options('*', cors()); 
 app.use(express.json());

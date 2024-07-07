@@ -3,7 +3,7 @@ import { loginUser, registerUser,google } from "../Controllers/auth.controller.j
 
 const router = express.Router();
 
-router.get("/", (_, res) => {
+router.get("/", (_, res) => {       
     res.send("Welcome to Auth provider routes");
 });
 
