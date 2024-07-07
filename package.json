@@ -4,6 +4,7 @@
   "main": "api.js",
   "type": "module",
   "scripts": {
+    "build": "npm start",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node api.js",
     "dev": "nodemon api.js"

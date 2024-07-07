@@ -1,7 +1,7 @@
 import express, { Router } from "express";
 import serverless from "serverless-http";
-import authRoute from "../Backend-WeddingWise/Routes/authRouter.js";
-import connectDB from "../Backend-WeddingWise/Database/config.js";
+import authRoute from "../../backend/Backend-WeddingWise/Routes/authRouter.js";
+import connectDB from "../../backend/Backend-WeddingWise/Database/config.js";
 import dotenv from "dotenv";
 import cors from "cors";
 
