@@ -26,6 +26,7 @@ export const registerUser = async (req, res, next) => {
       .status(200)
       .json({ message: "User Registered Successfully", result: newUser });
   } catch (error) {
+    console.log(error)
     next(error);
   }
 };
@@ -52,6 +53,7 @@ export const loginUser = async (req, res, next) => {
       .status(200)
       .json({ message: "User LoggedIn Successfully", rest, token });
   } catch (error) {
+    console.log(error)
     next(error);
   }
 };
