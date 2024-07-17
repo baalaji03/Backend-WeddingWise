@@ -2,7 +2,7 @@ import User from "../Models/userModel.js";
 import { errorHandler } from "../Utils/Error.js";
 import bcryptjs from "bcryptjs";
 import jwt from "jsonwebtoken";
-import dotenv from "dotenv";
+import dotenv from "dotenv";  
 dotenv.config();
 
 export const registerUser = async (req, res, next) => {
