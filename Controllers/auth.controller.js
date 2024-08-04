@@ -24,7 +24,7 @@ export const registerUser = async (req, res, next) => {
     await newUser.save();
     res
       .status(200)
-      .json({ message: "User Registered Successfully", result: newUser });
+      .json({ message: "User Registered Successfully", result: newUser }); 
   } catch (error) {
     console.log(error)
     next(error);
@@ -104,3 +104,17 @@ export const google = async (req, res, next) => {
     next(error);
   }
 };
+
+export const getUser = async (req, res, next) => {
+  const { email, name, profilePic } = req.body;
+
+  try {
+    var users = await User.find({});
+    res
+        .status(200)
+        .json(users);
+  } catch (error) {
+    console.log(error);
+    next(error);
+  }
+}
